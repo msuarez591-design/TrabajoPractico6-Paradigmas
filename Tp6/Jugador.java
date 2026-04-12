@@ -11,8 +11,8 @@ public class Jugador {
     // Atributos
     private String paisDeOrigen;
     private String nombre;
-    private final int dni;
-    private final Estadisticas estad;
+    private int dni;
+    private Estadisticas estad;
 
     // Constructores
     public Jugador() {

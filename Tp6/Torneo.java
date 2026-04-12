@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 /**
@@ -7,8 +8,9 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Torneo {
-   private final ArrayList<Partida> listaPartidas;
-    private final ArrayList<Jugador> listaJugadores;
+
+    private  ArrayList<Partida> listaPartidas;
+    private  ArrayList<Jugador> listaJugadores;
 
     // Constructores
     public Torneo() {
@@ -17,21 +19,21 @@ public class Torneo {
     }
 
     // Metodos
-  public void crearPartida(String competencia, String pais1, String nombre1, String pais2, String nombre2) {
+    public void crearPartida(String competencia, String pais1, String nombre1, String pais2, String nombre2) {
         // Quitamos partidas1 y partidas2 de los argumentos de abajo también
         Partida nuevaPartida = new Partida(competencia, pais1, nombre1, 0, pais2, nombre2, 0);
-        
+
         this.listaPartidas.add(nuevaPartida);
-        
+
         actualizarOAgregarJugador(nuevaPartida.obtenerJugador1());
         actualizarOAgregarJugador(nuevaPartida.obtenerJugador2());
-        
+
         System.out.println("Partida registrada: " + nombre1 + " vs " + nombre2);
     }
 
     private void actualizarOAgregarJugador(Jugador jugadorDeLaPartida) {
         boolean existe = false;
-        
+
         for (Jugador j : listaJugadores) {
             // Si el nombre ya está en la lista de jugadores...
             if (j.getNombre().equalsIgnoreCase(jugadorDeLaPartida.getNombre())) {
@@ -41,20 +43,20 @@ public class Torneo {
                 break; // Salimos del bucle porque ya lo encontramos
             }
         }
-        
+
         // Si después de buscar no lo encontramos, lo agregamos como jugador nuevo
         if (!existe) {
             this.listaJugadores.add(jugadorDeLaPartida);
         }
     }
-    
+
     public void listarJugadores() {
         System.out.println("\n--- JUGADORES DEL TORNEO ---");
         for (Jugador j : listaJugadores) {
             System.out.println("- " + j.getNombre() + " (País: " + j.getPaisDeOrigen() + ")");
         }
     }
-    
+
     public void buscarJugadorPorNombre(String nombre) {
         for (Jugador j : listaJugadores) {
             if (j.getNombre().equalsIgnoreCase(nombre)) {
