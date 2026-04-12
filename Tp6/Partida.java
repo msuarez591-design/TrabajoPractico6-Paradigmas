@@ -99,12 +99,10 @@ public class Partida {
     }
 
     public void setJugadores(String pais1, String nombre1, int puntaje1, int partidas1, String pais2, String nombre2, int puntaje2, int partidas2) {
-        // CORRECCIÓN: Se agregó 'new'
         this.jugador1 = new Jugador(pais1, nombre1, puntaje1, partidas1);
         this.jugador2 = new Jugador(pais2, nombre2, puntaje2, partidas2);
     }  
 
-    // CORRECCIÓN: Tu lógica original, devuelve exclusivamente 0 o 1
     private int ramdonpunto() {
         Random rand = new Random();
         return rand.nextInt(2); 

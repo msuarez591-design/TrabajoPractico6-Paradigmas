@@ -12,21 +12,21 @@ public class Jugador {
     private String paisDeOrigen;
     private String nombre;
     private int dni;
-    private Estadistica estad;
+    private Estadisticas estad;
 
     // Constructores
     public Jugador() {
         this.paisDeOrigen = "";
         this.nombre = "";
         this.dni = generaDNI();
-        this.estad = new Estadistica();
+        this.estad = new Estadisticas();
     }
 
     public Jugador(String pais, String nombre, int puntaje, int partidas) {
         this.paisDeOrigen = pais;
         this.nombre = nombre;
         this.dni = generaDNI();
-        this.estad = new Estadistica(puntaje, partidas); 
+        this.estad = new Estadisticas(puntaje, partidas); 
     }
 
     // Metodos Set y get
@@ -49,6 +49,10 @@ public class Jugador {
     public void getEstadistica() {
         System.out.println("----------DATOS DEL JUGADOR---------\n");
         System.out.println("Puntaje: " + this.estad.getPuntaje() + " Partidas: " + this.estad.getPartidas());
+    }
+
+    public int getPuntajeActual() {
+        return this.estad.getPuntaje();
     }
 
     public void setEstadistica(int puntaje, int partidas) {

@@ -1,4 +1,4 @@
-import java.util.ArrayList; // CORRECCIÓN: Importamos ArrayList para las colecciones
+import java.util.ArrayList;
 
 /**
  * Administra el torneo, las colecciones de jugadores y las partidas.
@@ -7,7 +7,6 @@ import java.util.ArrayList; // CORRECCIÓN: Importamos ArrayList para las colecc
  * @version 1.0
  */
 public class Torneo {
-    // Atributos modificados a Colecciones según consigna
     private ArrayList<Partida> listaPartidas;
     private ArrayList<Jugador> listaJugadores;
 
@@ -19,37 +18,68 @@ public class Torneo {
 
     // Metodos
     public void crearPartida(String competencia, String pais1, String nombre1, int partidas1, String pais2, String nombre2, int partidas2) {
-        // Tu lógica de crear la partida
         Partida nuevaPartida = new Partida(competencia, pais1, nombre1, partidas1, pais2, nombre2, partidas2);
         
-        // Guardamos la partida en la colección con el metdo add de ArrayList
+        // Guardamos la partida
         this.listaPartidas.add(nuevaPartida);
         
-        // Guardamos a los jugadores creados en la partida en nuestra colección de jugadores
-        this.listaJugadores.add(nuevaPartida.obtenerJugador1());
-        this.listaJugadores.add(nuevaPartida.obtenerJugador2());
+        // Verificamos si los jugadores ya existen antes de guardarlos
+        actualizarOAgregarJugador(nuevaPartida.obtenerJugador1());
+        actualizarOAgregarJugador(nuevaPartida.obtenerJugador2());
         
-        System.out.println("Partida creada y guardada en el historial.");
+        System.out.println("Partida registrada: " + nombre1 + " vs " + nombre2);
+    }
+
+    private void actualizarOAgregarJugador(Jugador jugadorDeLaPartida) {
+        boolean existe = false;
+        
+        for (Jugador j : listaJugadores) {
+            // Si el nombre ya está en la lista de jugadores...
+            if (j.getNombre().equalsIgnoreCase(jugadorDeLaPartida.getNombre())) {
+                // Le sumamos los puntos que ganó en esta partida y sumamos 1 partida jugada
+                j.SumarEstadistica(jugadorDeLaPartida.getPuntajeActual(), 1);
+                existe = true;
+                break; // Salimos del bucle porque ya lo encontramos
+            }
+        }
+        
+        // Si después de buscar no lo encontramos, lo agregamos como jugador nuevo
+        if (!existe) {
+            this.listaJugadores.add(jugadorDeLaPartida);
+        }
     }
     
     public void listarJugadores() {
-        System.out.println("--- JUGADORES DEL TORNEO ---");
-        // bucle para imprimir los jugadores
-        // se busca en la colección de jugadores y se imprime su nombre y país de origen
+        System.out.println("\n--- JUGADORES DEL TORNEO ---");
         for (Jugador j : listaJugadores) {
             System.out.println("- " + j.getNombre() + " (País: " + j.getPaisDeOrigen() + ")");
         }
     }
     
     public void buscarJugadorPorNombre(String nombre) {
-        //bucle para buscar el jugador por nombre en la colección de jugadores
         for (Jugador j : listaJugadores) {
             if (j.getNombre().equalsIgnoreCase(nombre)) {
-                System.out.println("¡Jugador encontrado!");
+                System.out.println("\n¡Jugador encontrado: " + j.getNombre() + "!");
                 j.getEstadistica();
                 return;
             }
         }
-        System.out.println("Jugador no encontrado.");
+        System.out.println("\nJugador '" + nombre + "' no encontrado.");
+    }
+
+    // Nombres en minúscula siguiendo las buenas prácticas
+    public void mostrarHistorial() {
+        System.out.println("\n--- HISTORIAL DE PARTIDAS ---");
+        for (Partida p : listaPartidas) {
+            System.out.println("Competencia: " + p.getNombreCompetencia() + " | Resultado: " + p.getResultado());
+        }
+    }
+
+    public void mostrarRanking() {
+        System.out.println("\n--- RANKING DE JUGADORES ---");
+        for (Jugador j : listaJugadores) {
+            // Ahora usamos el nuevo método que nos devuelve el número exacto
+            System.out.println(j.getNombre() + " - Puntaje total: " + j.getPuntajeActual());
+        }
     }
 }
