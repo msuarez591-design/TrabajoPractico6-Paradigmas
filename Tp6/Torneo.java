@@ -52,12 +52,14 @@ public class Torneo {
 
     public void listarJugadores() {
         System.out.println("\n--- JUGADORES DEL TORNEO ---");
+        //Itera a lo largo de toda la lista de jugadores mostrando su nombre y pais de origen hasta que llegue al final de la misma
         for (Jugador j : listaJugadores) {
             System.out.println("- " + j.getNombre() + " (País: " + j.getPaisDeOrigen() + ")");
         }
     }
 
     public void buscarJugadorPorNombre(String nombre) {
+        //Iteramos sobre la lista de jugadores y por cada iteracion evaluamos la condicion utilizando un metodo de la biblioteca de strings para comparar el nombre ingresado como parametro con el nombre del jugador. Todo esto utilizando la "j" como indice de la iteracion
         for (Jugador j : listaJugadores) {
             if (j.getNombre().equalsIgnoreCase(nombre)) {
                 System.out.println("\n¡Jugador encontrado: " + j.getNombre() + "!");
