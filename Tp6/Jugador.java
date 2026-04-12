@@ -1,13 +1,15 @@
+
 import java.util.Random;
 
 /**
- * Representa un jugador dentro del torneo.
- * Permite almacenar su nombre, país, DNI y estadísticas.
+ * Representa un jugador dentro del torneo. Contiene datos personales y
+ * estadísticas.
  *
- * @author Tu Nombre
+ * @author C. Guadalupe Bravo y Martin E. Suárez
  * @version 1.0
  */
 public class Jugador {
+
     // Atributos
     private String paisDeOrigen;
     private String nombre;
@@ -26,7 +28,7 @@ public class Jugador {
         this.paisDeOrigen = pais;
         this.nombre = nombre;
         this.dni = generaDNI();
-        this.estad = new Estadisticas(puntaje, partidas); 
+        this.estad = new Estadisticas(puntaje, partidas);
     }
 
     // Metodos Set y get
@@ -38,9 +40,14 @@ public class Jugador {
         this.paisDeOrigen = paisDeOrigen;
     }
 
+    /**
+     * Obtiene el nombre del jugador.
+     *
+     * @return nombre del jugador
+     */
     public String getNombre() {
         return this.nombre;
-    } 
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -51,6 +58,11 @@ public class Jugador {
         System.out.println("Puntaje: " + this.estad.getPuntaje() + " Partidas: " + this.estad.getPartidas());
     }
 
+    /**
+     * Obtiene el puntaje actual del jugador.
+     *
+     * @return puntaje acumulado
+     */
     public int getPuntajeActual() {
         return this.estad.getPuntaje();
     }
@@ -60,6 +72,12 @@ public class Jugador {
         this.estad.setPartidas(partidas);
     }
 
+    /**
+     * Suma estadísticas al jugador.
+     *
+     * @param puntaje puntos a sumar
+     * @param partidas partidas a sumar
+     */
     public void SumarEstadistica(int puntaje, int partidas) {
         this.estad.sumarPuntos(puntaje);
         this.estad.sumarPartidas(partidas);

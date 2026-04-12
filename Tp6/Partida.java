@@ -2,10 +2,10 @@
 import java.util.Random;
 
 /**
- * Representa una partida entre dos jugadores. Se simulan los enfrentamientos de
- * forma aleatoria asignando 0 o 1 punto.
+ * Representa una partida entre dos jugadores. El resultado se genera de forma
+ * aleatoria.
  *
- * @author Tu Nombre
+ * @author C. Guadalupe Bravo y Martin E. Suárez
  * @version 1.0
  */
 public class Partida {
@@ -26,6 +26,11 @@ public class Partida {
         this.jugador2 = null;
     }
 
+    /**
+     * Genera un puntaje aleatorio (0 o 1).
+     *
+     * @return valor entero aleatorio
+     */
     public Partida(String competencia, String pais1, String nombre1, int partidas1, String pais2, String nombre2, int partidas2) {
         this.nombreCompetencia = competencia;
         this.puntaje1 = ramdonpunto();
@@ -41,11 +46,9 @@ public class Partida {
             this.resultado = "Empate";
         }
 
-        // CORRECCIÓN: Se agregó 'new' para instanciar los objetos
-        // Al poner un 1, cada vez que se cree una partida, el jugador sumará 1 al contador
         this.jugador1 = new Jugador(pais1, nombre1, this.puntaje1, 1);
         this.jugador2 = new Jugador(pais2, nombre2, this.puntaje2, 1);
-      
+
     }
 
     // Metodos
@@ -107,16 +110,30 @@ public class Partida {
         this.jugador2 = new Jugador(pais2, nombre2, puntaje2, partidas2);
     }
 
+    /**
+     * Genera un puntaje aleatorio (0 o 1).
+     *
+     * @return valor entero aleatorio
+     */
     private int ramdonpunto() {
         Random rand = new Random();
         return rand.nextInt(2);
     }
 
-    // Métodos extra para que Torneo pueda pedirte los jugadores de esta partida y guardarlos
+    /**
+     * Obtiene el jugador 1 de la partida.
+     *
+     * @return jugador 1
+     */
     public Jugador obtenerJugador1() {
         return this.jugador1;
     }
 
+    /**
+     * Obtiene el jugador 2 de la partida.
+     *
+     * @return jugador 2
+     */
     public Jugador obtenerJugador2() {
         return this.jugador2;
     }
