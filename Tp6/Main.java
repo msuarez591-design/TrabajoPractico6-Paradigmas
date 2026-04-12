@@ -1,18 +1,18 @@
+
 public class Main {
+
     public static void main(String[] args) {
         System.out.println("=== INICIANDO SISTEMA DE GESTIÓN DE TORNEO ===");
         Torneo torneo = new Torneo();
 
         System.out.println("\n[1] CREACIÓN DE PARTIDAS Y JUGADORES (Simulando 3 enfrentamientos)");
-        
+
         // Partida 1: Ana vs Luis
-        torneo.crearPartida("Torneo fifa", "Argentina", "Ana", 0, "Chile", "Luis", 0);
-        
         // Partida 2: Pedro vs Ana
-        torneo.crearPartida("Torneo fifa", "Uruguay", "Pedro", 0, "Argentina", "Ana", 0);
-        
         // Partida 3: Luis vs Pedro
-        torneo.crearPartida("Torneo fifa", "Chile", "Luis", 0, "Uruguay", "Pedro", 0);
+        torneo.crearPartida("Torneo Mario bross", "Argentina", "Ana", "Chile", "Luis");
+        torneo.crearPartida("Torneo Mario bross", "Uruguay", "Pedro", "Argentina", "Ana");
+        torneo.crearPartida("Torneo Mario bross", "Chile", "Luis", "Uruguay", "Pedro");
 
         System.out.println("\n[2] LISTADO DEL TORNEO (Jugadores inscritos)");
         torneo.listarJugadores();

@@ -1,13 +1,15 @@
+
 import java.util.Random;
 
 /**
- * Representa una partida entre dos jugadores.
- * Se simulan los enfrentamientos de forma aleatoria asignando 0 o 1 punto.
+ * Representa una partida entre dos jugadores. Se simulan los enfrentamientos de
+ * forma aleatoria asignando 0 o 1 punto.
  *
  * @author Tu Nombre
  * @version 1.0
  */
 public class Partida {
+
     // Atributos
     private String resultado;
     private int puntaje1;
@@ -28,7 +30,7 @@ public class Partida {
         this.nombreCompetencia = competencia;
         this.puntaje1 = ramdonpunto();
         this.puntaje2 = ramdonpunto();
-        
+
         if (this.puntaje1 > this.puntaje2) {
             this.resultado = "ganador jugador 1";
         }
@@ -38,10 +40,12 @@ public class Partida {
         if (this.puntaje2 == this.puntaje1) {
             this.resultado = "Empate";
         }
-        
+
         // CORRECCIÓN: Se agregó 'new' para instanciar los objetos
-        this.jugador1 = new Jugador(pais1, nombre1, this.puntaje1, partidas1);
-        this.jugador2 = new Jugador(pais2, nombre2, this.puntaje2, partidas2);
+        // Al poner un 1, cada vez que se cree una partida, el jugador sumará 1 al contador
+        this.jugador1 = new Jugador(pais1, nombre1, this.puntaje1, 1);
+        this.jugador2 = new Jugador(pais2, nombre2, this.puntaje2, 1);
+      
     }
 
     // Metodos
@@ -80,7 +84,7 @@ public class Partida {
         System.out.println("Jugador 1: ");
         System.out.println("Nombre: " + this.jugador1.getNombre() + " Pais de origen: " + this.jugador1.getPaisDeOrigen() + " DNI: " + this.jugador1.getDNI());
         this.jugador1.getEstadistica();
-        
+
         System.out.println("Jugador 2: ");
         System.out.println("Nombre: " + this.jugador2.getNombre() + " Pais de origen: " + this.jugador2.getPaisDeOrigen() + " DNI: " + this.jugador2.getDNI());
         this.jugador2.getEstadistica();
@@ -101,19 +105,19 @@ public class Partida {
     public void setJugadores(String pais1, String nombre1, int puntaje1, int partidas1, String pais2, String nombre2, int puntaje2, int partidas2) {
         this.jugador1 = new Jugador(pais1, nombre1, puntaje1, partidas1);
         this.jugador2 = new Jugador(pais2, nombre2, puntaje2, partidas2);
-    }  
+    }
 
     private int ramdonpunto() {
         Random rand = new Random();
-        return rand.nextInt(2); 
-    }  
+        return rand.nextInt(2);
+    }
 
     // Métodos extra para que Torneo pueda pedirte los jugadores de esta partida y guardarlos
-    public Jugador obtenerJugador1() { 
-        return this.jugador1; 
+    public Jugador obtenerJugador1() {
+        return this.jugador1;
     }
-    
-    public Jugador obtenerJugador2() { 
-        return this.jugador2; 
+
+    public Jugador obtenerJugador2() {
+        return this.jugador2;
     }
 }

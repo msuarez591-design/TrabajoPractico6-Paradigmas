@@ -7,8 +7,8 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Torneo {
-    private ArrayList<Partida> listaPartidas;
-    private ArrayList<Jugador> listaJugadores;
+   private final ArrayList<Partida> listaPartidas;
+    private final ArrayList<Jugador> listaJugadores;
 
     // Constructores
     public Torneo() {
@@ -17,13 +17,12 @@ public class Torneo {
     }
 
     // Metodos
-    public void crearPartida(String competencia, String pais1, String nombre1, int partidas1, String pais2, String nombre2, int partidas2) {
-        Partida nuevaPartida = new Partida(competencia, pais1, nombre1, partidas1, pais2, nombre2, partidas2);
+  public void crearPartida(String competencia, String pais1, String nombre1, String pais2, String nombre2) {
+        // Quitamos partidas1 y partidas2 de los argumentos de abajo también
+        Partida nuevaPartida = new Partida(competencia, pais1, nombre1, 0, pais2, nombre2, 0);
         
-        // Guardamos la partida
         this.listaPartidas.add(nuevaPartida);
         
-        // Verificamos si los jugadores ya existen antes de guardarlos
         actualizarOAgregarJugador(nuevaPartida.obtenerJugador1());
         actualizarOAgregarJugador(nuevaPartida.obtenerJugador2());
         
