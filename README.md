@@ -29,9 +29,10 @@ Este proyecto implementa un sistema de gestión de torneos de videojuegos en Jav
 
 Ejecutar la clase `Main` para iniciar el sistema.
 
-## 👤 Autor
+## 👤 Autores
 
-[Tu Nombre]
+Martin E. Suarez
+C. Guadalupe Bravo Maggio
 
 ## 📅 Versión
 
