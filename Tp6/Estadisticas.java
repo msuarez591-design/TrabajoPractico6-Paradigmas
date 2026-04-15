@@ -17,8 +17,15 @@ public class Estadisticas {
         this.puntaje = 0;
         this.partidas = 0;
     }
-
+    // @throws IllegalArgumentException se requiere una validacion para evitar que el puntaje y la partida sea negativo
     Estadisticas(int puntaje, int partidas) {
+        //valida que el puntaje y las partidas no sean negativos
+        if(puntaje < 0){
+            throw new IllegalArgumentException("Error: El puntaje no puede ser negativo.");
+        }
+        if(partidas < 0){
+            throw new IllegalArgumentException("Error: La cantidad de partidas no puede ser negativa.");
+        }
         this.puntaje = puntaje;
         this.partidas = partidas;
     }

@@ -45,9 +45,22 @@ public class Partida {
         if (this.puntaje2 == this.puntaje1) {
             this.resultado = "Empate";
         }
-
-        this.jugador1 = new Jugador(pais1, nombre1, this.puntaje1, 1);
-        this.jugador2 = new Jugador(pais2, nombre2, this.puntaje2, 1);
+        //Jugador 1
+        try {
+            this.jugador1 = new Jugador(pais1, nombre1, this.puntaje1, 1); 
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error al crear jugador 1: " + e.getMessage());
+            this.jugador1 = new Jugador("Argentina", "Jugador 1", this.puntaje1, 1); 
+            System.out.println("Jugador 1 creado con datos por defecto: Pais: Argentina, Nombre: Jugador 1");
+        }
+        //Jugador 2
+        try {
+            this.jugador2 = new Jugador(pais2, nombre2, this.puntaje2, 1);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error al crear jugador 2: " + e.getMessage());
+            this.jugador2 = new Jugador("Argentina", "Jugador 2", this.puntaje2, 1);
+            System.out.println("Jugador 2 creado con datos por defecto: Pais: Argentina, Nombre: Jugador 2");
+        }
 
     }
 

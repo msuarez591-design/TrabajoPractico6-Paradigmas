@@ -24,11 +24,25 @@ public class Jugador {
         this.estad = new Estadisticas();
     }
 
+    // @throws IllegalArgumentException el dato del pais de origen y el nombre del jugador no puede ser nulo
     public Jugador(String pais, String nombre, int puntaje, int partidas) {
+        if (pais == null || pais.trim().isEmpty()) {
+            throw new IllegalArgumentException("El pais de origen no puede ser nulo.");
+        }
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede ser nulo.");
+        }
         this.paisDeOrigen = pais;
         this.nombre = nombre;
         this.dni = generaDNI();
-        this.estad = new Estadisticas(puntaje, partidas);
+        try {
+            this.estad = new Estadisticas(puntaje, partidas);
+        } catch (IllegalArgumentException e) {
+            // Si hay error por números negativos, mostramos advertencia y asignamos (0,0)
+            System.out.println("Advertencia al crear jugador " + nombre + ": " + e.getMessage());
+            System.out.println("Se le asignarán 0 puntos y 0 partidas por defecto.");
+            this.estad = new Estadisticas(0, 0);
+        }
     }
 
     // Metodos Set y get
