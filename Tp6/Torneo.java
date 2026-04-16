@@ -31,7 +31,7 @@ public class Torneo {
      */
     public void crearPartida(String competencia, String pais1, String nombre1, String pais2, String nombre2) {
         // Quitamos partidas1 y partidas2 de los argumentos de abajo también
-        Partida nuevaPartida = new Partida(competencia, pais1, nombre1, 0, pais2, nombre2, 0);
+        Partida nuevaPartida = new Partida(competencia, pais1, nombre1, pais2, nombre2);
 
         this.listaPartidas.add(nuevaPartida);
 

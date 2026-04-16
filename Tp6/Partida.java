@@ -31,7 +31,7 @@ public class Partida {
      *
      * @return valor entero aleatorio
      */
-    public Partida(String competencia, String pais1, String nombre1, int partidas1, String pais2, String nombre2, int partidas2) {
+    public Partida(String competencia, String pais1, String nombre1, String pais2, String nombre2) {
         this.nombreCompetencia = competencia;
         this.puntaje1 = ramdonpunto();
         this.puntaje2 = ramdonpunto();
